@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
       - name: todo-profile
-        image: suganda/todo-profile
+        image: irvanmoedjiono/todo-profile:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 5001
 
 ---
 apiVersion: apps/v1
@@ -35,9 +35,9 @@ spec:
     spec:
       containers:
       - name: todo-services
-        image: suganda/todo-services
+        image: irvanmoedjiono/todo-services:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 4000
         
 ---
 apiVersion: apps/v1
@@ -56,9 +56,9 @@ spec:
     spec:
       containers:
       - name: todo-skill
-        image: suganda/todo-skill
+        image: irvanmoedjiono/todo-skill:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 5000
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -76,9 +76,9 @@ spec:
     spec:
       containers:
       - name: todo-todo
-        image: suganda/todo-todo
+        image: irvanmoedjiono/todo-todo:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 5002
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -96,26 +96,26 @@ spec:
     spec:
       containers:
       - name: todo-user
-        image: suganda/todo-user
+        image: irvanmoedjiono/todo-user:1.0
         ports:
-        - containerPort: 80
+        - containerPort: 7000
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-profile
+  name: mongo
 spec:
   selector:
     matchLabels:
-      app: todo-profile
+      app: mongo
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: todo-profile
+        app: mongo
     spec:
       containers:
-      - name: todo-profile
-        image: mongodb
+      - name: mongo
+        image: mongo
         ports:
         - containerPort: 27017

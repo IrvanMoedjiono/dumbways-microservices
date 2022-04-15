@@ -8,7 +8,7 @@ services:
         - PUID=1000
         - PGID=1000
         volumes:
-        - /home/sgnd/mongo/database:/data/db
+        - /home/ubuntu/mongo/database:/data/db
         ports:
         - 27017:27017
         restart: unless-stopped
@@ -16,7 +16,7 @@ services:
     todo-profile:
         build: ./profile
         command: "ts-node /app/src/server"
-        image: suganda/todo-profile
+        image: irvanmoedjiono/todo-profile:1.0
         restart: always
         container_name: todo-profile
         ports:
@@ -25,7 +25,7 @@ services:
     todo-services:
         build: ./services
         command: "node /app/src/server.js"
-        image: suganda/todo-services
+        image: irvanmoedjiono/todo-services:1.0
         restart: always
         container_name: todo-services
         ports:
@@ -34,7 +34,7 @@ services:
     todo-skill:
         build: ./skill
         command: "ts-node /app/src/server"
-        image: suganda/todo-skill
+        image: irvanmoedjiono/todo-skill:1.0
         restart: always
         container_name: todo-skill
         ports:
@@ -43,7 +43,7 @@ services:
     todo-todo:
         build: ./todo
         command: "ts-node /app/src/server"
-        image: suganda/todo-todo
+        image: irvanmoedjiono/todo-todo:1.0
         restart: always
         container_name: todo-todo
         ports:
@@ -52,7 +52,7 @@ services:
     todo-user:
         build: ./user
         command: "ts-node /app/src/server"
-        image: suganda/todo-user
+        image: irvanmoedjiono/todo-user:1.0
         restart: always
         container_name: todo-user
         ports:
